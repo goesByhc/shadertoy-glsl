@@ -1,4 +1,13 @@
 
+#define sat(x) clamp(x, 0. , 1.);
+float remap01(float a, float b, float t) {
+    return sat((t-a)/(b-a));
+}
+
+float remap(float a, float b, float c, float d, float t) {
+    return ((t-a)/(b-a)) * (d-c) + c;
+}
+
 float heart(vec2 p) {
     float x = p.x;
     float y = p.y;
@@ -34,6 +43,6 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     float blur = 0.05;
 
-    fragColor = vec4(mix(bcol, hcol, smoothstep(0.0, 1.0, -(1.0/blur)*(pheart-r)+1.0)), 1.0);
+    fragColor = vec4(mix(bcol, hcol, smoothstep(0.0, 1.0, -(1.0/b lur)*(pheart-r)+1.0)), 1.0);
 
 }
